@@ -14,6 +14,10 @@ class m160402_201203_stories extends Migration
                 'created_at' => $this->datetime()->notNull(),
                 'updated_at' => $this->datetime(),
             ]);
+        
+        $this->addForeignKey("FK_stories_users", "stories", "user_id", "users", "id", 'RESTRICT');
+        //  ALTER TABLE `stories`
+        //  ADD CONSTRAINT `FK_stories_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
     }
 
     public function down()

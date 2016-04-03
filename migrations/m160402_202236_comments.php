@@ -14,6 +14,12 @@ class m160402_202236_comments extends Migration
                 'created_at' => $this->datetime()->notNull(),
                 'updated_at' => $this->datetime(),
             ]);
+        
+        $this->addForeignKey("FK_comments_users", "comments", "user_id", "users", "id", 'RESTRICT');
+        $this->addForeignKey("FK_comments_stories", "comments", "story_id", "stories", "id", 'RESTRICT');
+        // ALTER TABLE `comments`
+        // ADD CONSTRAINT `FK_comments_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+        // ADD CONSTRAINT `FK_comments_stories` FOREIGN KEY (`story_id`) REFERENCES `stories` (`id`);
     }
 
     public function down()
