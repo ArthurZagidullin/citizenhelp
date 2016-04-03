@@ -6,14 +6,23 @@ class m160402_201203_stories extends Migration
 {
     public function up()
     {
-
+        $this->createTable('stories',[
+                'id' => $this->primaryKey(),
+                'user_id' => $this->integer()->notNull(),
+                'title' => $this->string()->notNull(),
+                'text' => $this->text()->notNull(),
+                'created_at' => $this->datetime()->notNull(),
+                'updated_at' => $this->datetime(),
+            ]);
     }
 
     public function down()
     {
-        echo "m160402_201203_stories cannot be reverted.\n";
+        echo "m160402_201203_stories reverted.\n";
+        
+        $this->dropTable('stories');
 
-        return false;
+        // return false;
     }
 
     /*

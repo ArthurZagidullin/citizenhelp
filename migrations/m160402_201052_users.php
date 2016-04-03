@@ -6,14 +6,22 @@ class m160402_201052_users extends Migration
 {
     public function up()
     {
-
+        $this->createTable('users',[
+                'id' => $this->primaryKey(),
+                'name' => $this->string()->notNull(),
+                'last_name' => $this->string(),
+                'password' => $this->string()->notNull(),
+                'created_at' => $this->datetime()->notNull(),
+                'updated_at' => $this->datetime(),
+            ]);
     }
 
     public function down()
     {
-        echo "m160402_201052_users cannot be reverted.\n";
+        echo "m160402_201052_users reverted.\n";
 
-        return false;
+        $this->dropTable('users');
+        // return false;
     }
 
     /*
